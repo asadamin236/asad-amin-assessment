@@ -39,10 +39,6 @@ const AdminDashboard = () => {
     });
   };
 
-  const generatePassword = () => {
-    const password = Math.random().toString(36).slice(-8) + "Aa1!";
-    setFormData({ ...formData, password });
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,7 +113,7 @@ const AdminDashboard = () => {
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold mb-6">Create New User</h2>
+          <h2 className="text-2xl font-bold mb-6 text-black">Create New User</h2>
           
           {error && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
@@ -133,7 +129,7 @@ const AdminDashboard = () => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 Full Name *
               </label>
               <input
@@ -142,13 +138,13 @@ const AdminDashboard = () => {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
                 placeholder="Enter full name"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 Email Address *
               </label>
               <input
@@ -157,13 +153,13 @@ const AdminDashboard = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
                 placeholder="Enter email address"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 Business Name *
               </label>
               <input
@@ -172,33 +168,24 @@ const AdminDashboard = () => {
                 value={formData.business_name}
                 onChange={handleInputChange}
                 required
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
                 placeholder="Enter business name"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 Password *
               </label>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                  className="flex-1 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Enter password or generate one"
-                />
-                <button
-                  type="button"
-                  onClick={generatePassword}
-                  className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
-                >
-                  Generate
-                </button>
-              </div>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                required
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
+                placeholder="Enter password"
+              />
             </div>
 
             <div className="pt-4">
