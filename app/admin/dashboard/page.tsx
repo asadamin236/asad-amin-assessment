@@ -93,27 +93,21 @@ const AdminDashboard = () => {
   return (
     <>
       <Navbar />
-      <div className="p-8 max-w-4xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-4">Admin Dashboard</h1>
-          <div className="flex gap-4 mb-6">
+      <div className="p-4 sm:p-8 max-w-4xl mx-auto">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-black">Add New User</h1>
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6">
             <button
               onClick={() => router.push("/clients")}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm sm:text-base"
             >
               View All Clients
-            </button>
-            <button
-              onClick={() => router.push("/admin/dashboard")}
-              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-            >
-              Create User
             </button>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold mb-6 text-black">Create New User</h2>
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-black">Create New User</h2>
           
           {error && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">

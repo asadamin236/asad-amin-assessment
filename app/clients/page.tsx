@@ -128,24 +128,16 @@ const ClientsPage = () => {
   return (
     <>
       <Navbar />
-      <div className="p-8 max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Clients</h1>
+      <div className="p-4 sm:p-8 max-w-6xl mx-auto">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6 gap-4">
+          <h1 className="text-xl sm:text-2xl font-bold text-black">Clients</h1>
           {isAdmin && (
-            <div className="flex gap-2">
-              <button
-                onClick={() => window.location.href = '/admin/dashboard'}
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-              >
-                Create User
-              </button>
-              <button
-                onClick={() => window.location.href = '/add-client'}
-                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-              >
-                Add Client
-              </button>
-            </div>
+            <button
+              onClick={() => window.location.href = '/admin/dashboard'}
+              className="bg-green-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-green-700 text-sm sm:text-base"
+            >
+              Add New User
+            </button>
           )}
         </div>
         
@@ -168,95 +160,102 @@ const ClientsPage = () => {
           <div className="bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded text-center">
             <p className="mb-2">No clients found.</p>
             {isAdmin && (
-              <p className="text-sm">Use the "Create User" or "Add Client" buttons above to add clients.</p>
+              <p className="text-sm">Use the "Add New User" button above to add clients.</p>
             )}
           </div>
         ) : (
-          <table className="w-full border">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="p-2">Name</th>
-                <th className="p-2">Email</th>
-                <th className="p-2">Business</th>
-                <th className="p-2">Role</th>
-                <th className="p-2">Created</th>
-                {isAdmin && <th className="p-2">Actions</th>}
-              </tr>
-            </thead>
-            <tbody>
-              {clients.map(client => (
-                <tr key={client.id} className="border-t">
-                  <td className="p-2">{client.name}</td>
-                  <td className="p-2">{client.email}</td>
-                  <td className="p-2">{client.business_name}</td>
-                  <td className="p-2">
-                    <span className={`px-2 py-1 rounded text-sm ${
-                      client.role === 'admin' 
-                        ? 'bg-red-100 text-red-800' 
-                        : 'bg-blue-100 text-blue-800'
-                    }`}>
-                      {client.role || 'client'}
-                    </span>
-                  </td>
-                  <td className="p-2">{new Date(client.created_at).toLocaleString()}</td>
-                  {isAdmin && (
-                    <td className="p-2">
-                      <div className="flex gap-2">
-                        <button
-                          className="bg-blue-500 text-white px-2 py-1 rounded text-sm hover:bg-blue-600"
-                          onClick={() => handleEdit(client)}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600"
-                          onClick={() => handleDelete(client.email)}
-                        >
-                          Delete
-                        </button>
+          <div className="overflow-x-auto">
+            <table className="w-full border min-w-full">
+              <thead>
+                <tr className="bg-gray-200">
+                  <th className="p-2 text-left text-xs sm:text-sm">Name</th>
+                  <th className="p-2 text-left text-xs sm:text-sm hidden sm:table-cell">Email</th>
+                  <th className="p-2 text-left text-xs sm:text-sm hidden md:table-cell">Business</th>
+                  <th className="p-2 text-left text-xs sm:text-sm">Role</th>
+                  <th className="p-2 text-left text-xs sm:text-sm hidden lg:table-cell">Created</th>
+                  {isAdmin && <th className="p-2 text-left text-xs sm:text-sm">Actions</th>}
+                </tr>
+              </thead>
+              <tbody>
+                {clients.map(client => (
+                  <tr key={client.id} className="border-t">
+                    <td className="p-2 text-xs sm:text-sm">
+                      <div>
+                        <div className="font-medium">{client.name}</div>
+                        <div className="sm:hidden text-xs text-gray-500">{client.email}</div>
                       </div>
                     </td>
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                    <td className="p-2 text-xs sm:text-sm hidden sm:table-cell">{client.email}</td>
+                    <td className="p-2 text-xs sm:text-sm hidden md:table-cell">{client.business_name}</td>
+                    <td className="p-2">
+                      <span className={`px-1 sm:px-2 py-1 rounded text-xs sm:text-sm ${
+                        client.role === 'admin' 
+                          ? 'bg-red-100 text-red-800' 
+                          : 'bg-blue-100 text-blue-800'
+                      }`}>
+                        {client.role || 'client'}
+                      </span>
+                    </td>
+                    <td className="p-2 text-xs sm:text-sm hidden lg:table-cell">{new Date(client.created_at).toLocaleString()}</td>
+                    {isAdmin && (
+                      <td className="p-2">
+                        <div className="flex flex-col sm:flex-row gap-1 sm:gap-2">
+                          <button
+                            className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600"
+                            onClick={() => handleEdit(client)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className="bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600"
+                            onClick={() => handleDelete(client.email)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </td>
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
 
       {/* Edit Modal */}
       {editingClient && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg w-96 max-w-90vw">
-            <h3 className="text-lg font-bold mb-4">Edit User: {editingClient.email}</h3>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white p-4 sm:p-6 rounded-lg w-full max-w-md">
+            <h3 className="text-lg font-bold mb-4 text-black">Edit User: {editingClient.email}</h3>
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Name</label>
+                <label className="block text-sm font-medium mb-1 text-black">Name</label>
                 <input
                   type="text"
                   value={editForm.name}
                   onChange={(e) => setEditForm({...editForm, name: e.target.value})}
-                  className="w-full p-2 border rounded"
+                  className="w-full p-2 border rounded text-black"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium mb-1">Business Name</label>
+                <label className="block text-sm font-medium mb-1 text-black">Business Name</label>
                 <input
                   type="text"
                   value={editForm.business_name}
                   onChange={(e) => setEditForm({...editForm, business_name: e.target.value})}
-                  className="w-full p-2 border rounded"
+                  className="w-full p-2 border rounded text-black"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium mb-1">Role</label>
+                <label className="block text-sm font-medium mb-1 text-black">Role</label>
                 <select
                   value={editForm.role}
                   onChange={(e) => setEditForm({...editForm, role: e.target.value})}
-                  className="w-full p-2 border rounded"
+                  className="w-full p-2 border rounded text-black"
                 >
                   <option value="client">Client</option>
                   <option value="admin">Admin</option>
@@ -264,27 +263,27 @@ const ClientsPage = () => {
               </div>
               
               <div>
-                <label className="block text-sm font-medium mb-1">New Password (optional)</label>
+                <label className="block text-sm font-medium mb-1 text-black">New Password (optional)</label>
                 <input
                   type="password"
                   value={editForm.new_password}
                   onChange={(e) => setEditForm({...editForm, new_password: e.target.value})}
-                  className="w-full p-2 border rounded"
+                  className="w-full p-2 border rounded text-black"
                   placeholder="Leave blank to keep current password"
                 />
               </div>
             </div>
             
-            <div className="flex gap-2 mt-6">
+            <div className="flex flex-col sm:flex-row gap-2 mt-6">
               <button
                 onClick={handleUpdate}
-                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 text-sm"
               >
                 Update
               </button>
               <button
                 onClick={cancelEdit}
-                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 text-sm"
               >
                 Cancel
               </button>
