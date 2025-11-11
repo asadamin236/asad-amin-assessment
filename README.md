@@ -2,17 +2,17 @@
 
 A modern, full-stack admin dashboard built with Next.js, Supabase, and email notifications for complete user management.
 
-## ✨ Features
+## Features
 
-- 🔐 **Secure Authentication** - Supabase Auth with role-based access
-- 👥 **User Management** - Complete CRUD operations for users
-- 📧 **Email Notifications** - Automated welcome emails via Gmail SMTP  
-- 🛡️ **Admin Dashboard** - Create and manage admin/client users
-- 🎨 **Modern UI** - Responsive design with Tailwind CSS
-- 🔒 **Role-Based Access** - Different permissions for admin vs client users
-- 📊 **Real-time Data** - Live updates with Supabase integration
+- **Secure Authentication** - Supabase Auth with role-based access
+- **User Management** - Complete CRUD operations for users
+- **Email Notifications** - Automated welcome emails via Gmail SMTP  
+- **Admin Dashboard** - Create and manage admin/client users
+- **Modern UI** - Responsive design with Tailwind CSS
+- **Role-Based Access** - Different permissions for admin vs client users
+- **Real-time Data** - Live updates with Supabase integration
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Frontend:** Next.js 16, React, TypeScript, Tailwind CSS
 - **Backend:** Next.js API Routes, Supabase
@@ -21,14 +21,14 @@ A modern, full-stack admin dashboard built with Next.js, Supabase, and email not
 - **Email:** Nodemailer with Gmail SMTP
 - **Deployment:** Vercel
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Node.js 18+ 
 - Supabase account and project
 - Gmail account with App Password
 - GitHub account (for deployment)
 
-## 🛠️ Installation
+## Installation
 
 1. **Clone the repository:**
 ```bash
@@ -64,7 +64,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## 🎯 Usage
+## Usage
 
 ### Creating an Admin User
 ```bash
@@ -90,7 +90,7 @@ POST /api/admin/create-user
 - Delete users (admin only)
 - Role-based UI rendering
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── app/
@@ -107,7 +107,7 @@ POST /api/admin/create-user
 └── public/                 # Static assets
 ```
 
-## 🚀 Deployment
+## Deployment
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions to Vercel.
 
@@ -117,7 +117,7 @@ Quick deploy:
 3. Add environment variables
 4. Deploy!
 
-## 🔐 Security Features
+## Security Features
 
 - Environment variables for sensitive data
 - Server-side API key validation
@@ -125,7 +125,7 @@ Quick deploy:
 - Secure password handling
 - Protected admin routes
 
-## 📧 Email System
+## Email System
 
 - Automated welcome emails for new users
 - Professional HTML templates
@@ -133,17 +133,17 @@ Quick deploy:
 - Gmail SMTP integration
 - Error handling and fallbacks
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
 4. Submit a pull request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
 
-## 📞 Support
+## Support
 
 For support or questions, please open an issue on GitHub.
